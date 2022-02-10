@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>联! 和!</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="grid">
+        <div class="tile top left"><div class="shape"></div><span>1</span></div>
+        <div class="tile top center"><div class="shape"></div><span>2</span></div>
+        <div class="tile top right"><div class="shape"></div><span>3</span></div>
+        <div class="tile middle left"><div class="shape"></div><span>4</span></div>
+        <div class="tile middle center"><div class="shape"></div><span>5</span></div>
+        <div class="tile middle right"><div class="shape"></div><span>6</span></div>
+        <div class="tile bottom left"><div class="shape"></div><span>7</span></div>
+        <div class="tile bottom center"><div class="shape"></div><span>8</span></div>
+        <div class="tile bottom right"><div class="shape"></div><span>9</span></div>
+    </main>
+    <aside>
+        <button class="gyul" type="reset">联</button>
+        <div class="score-text">Score: <span id="score">0</span></div>
+        <div style="font-size: 14px;border: dashed gray 1px;padding:5px">
+            <p>在面板上，你将看到9个瓷砖</p>
+            <p> 每个瓷砖有三个质量:形状、形状颜色和背景颜色</p>
+            <p> 要得到“和”，选择三个瓷砖，使你选择的三个瓷砖的三个质量要么完全不同，要么完全相同。</p>
+            <p> 例如,你可以得选择:1:红色三角与黑色背景2:蓝色圆形与黑色背景3:黄色正方形与黑色背景</p>
+            <p> 同样道理:1:红色三角形白色背景2:红色圆圈和灰色背景3:红色正方形与黑色背景</p>
+            <p> 若找到一组加1分，若认为找完了可点击联加3分</p>
+        </div>
+    </aside>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
