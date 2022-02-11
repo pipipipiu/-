@@ -209,13 +209,31 @@ function checkThreeTilesSelected() {
             }
         }
         let hap = checkForHap(selectedTiles);
+        let testList=[
+            "哇哦",
+        ];
         if (hap && !foundHaps.includes(selectedTileIndexes)) {
-
+            testList=[
+                "OHHHHHHHHH",
+                "牛啊牛啊",
+                "66666666666666",
+                "卡姿兰大眼睛也没有你的雪亮",
+            ];
             console.log("Correct Hap +1")
             updateScore(1);
             updateLog(selectedTileIndexes,true);
             foundHaps.push(selectedTileIndexes);
         } else {
+            testList=[
+                "你行不行啊",
+                "笑死我了",
+                "好好笑哦",
+                "弱爆了你",
+                "哈哈哈哈哈哈哈",
+                "不会吧，不会吧，这么简单的游戏都不会",
+                "小脑养鱼吗",
+                "眼睛不用的话可以捐一下",
+            ];
             console.log("Wrong Hap -1")
             updateLog(selectedTileIndexes,false);
             updateScore(-1);
@@ -234,7 +252,30 @@ function checkThreeTilesSelected() {
                 let currentTile = allTiles[i];
                 currentTile.style.borderColor = BORDER_BLACK;
             }; 
-        }, 500);
+        }, 500)
+        const n=Math.floor(Math.random() * testList.length + 1)-1;   //随机获取一条数据
+        const $i=$("<p/>").text(testList[n]);      //新建一个b标签，并显示随机的话语
+        const x=$("body").width/2,y=450;            //获取鼠标点击的x，和y
+        $i.css({
+            "font-size": 40,//为标签赋予css值
+            "z-index":99999,
+            "top":y-20,
+            "left":x,
+            "position":"absolute",
+            "color":"#e95006",
+            "font-family":"微软雅黑",
+            "cursor":"default",
+            "-moz-user-select": "none",
+            "-webkit-user-select": "none",
+            "-ms-user-select": "none",
+            "-khtml-user-select": "none",
+            "user-select": "none",
+        });
+        $("body").append($i);               //在尾部插入
+        $i.animate({"top": y - 400, "opacity": 0}, 1500, function () {
+            $i.remove();
+        });     //动画消除;
+
     }
 }
 
@@ -294,7 +335,7 @@ function findAllHaps() {
 }
 
 function checkForGyul(keyframes, options) {
-    var dfs=[
+    let dfs=[
         "哇哦",
     ];
     if (foundHaps.length == allHaps.length) {
@@ -322,9 +363,9 @@ function checkForGyul(keyframes, options) {
         ];
 
     }
-    var n=Math.floor(Math.random() * dfs.length + 1)-1;   //随机获取一条数据
-    var $i=$("<p style='font-size: 22px'/>").text(dfs[n]);      //新建一个b标签，并显示随机的话语
-    var x=keyframes.x+10,y=keyframes.y-58;            //获取鼠标点击的x，和y
+    const n=Math.floor(Math.random() * dfs.length + 1)-1;   //随机获取一条数据
+    const $i=$("<p style='font-size: 22px'/>").text(dfs[n]);      //新建一个b标签，并显示随机的话语
+    const x=keyframes.x+10,y=keyframes.y-58;            //获取鼠标点击的x，和y
     $i.css({                            //为标签赋予css值
         "z-index":99999,
         "top":y-20,
