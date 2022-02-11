@@ -305,13 +305,13 @@ function checkForGyul(keyframes, options) {
         ];
         console.log("Gyul! +3");
         updateScore(3);
-        scoreElement.innerText = "";
+        logElement.innerText = "";
         roundNumber++;
         playRound();
     } else {
         console.log("Not Gyul! -1");
         updateScore(-1);
-        var dfs=[
+        dfs=[
             "你行不行啊",
             "笑死我了",
             "弱爆了你",
