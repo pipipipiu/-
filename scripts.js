@@ -297,6 +297,7 @@ function checkForGyul() {
     if (foundHaps.length == allHaps.length) {
         console.log("Gyul! +3");
         updateScore(3);
+        scoreElement.innerText = "";
         roundNumber++;
         playRound();
     } else {
