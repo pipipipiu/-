@@ -293,8 +293,16 @@ function findAllHaps() {
     return allHaps;
 }
 
-function checkForGyul() {
+function checkForGyul(keyframes, options) {
+    var dfs=[
+        "哇哦",
+    ];
     if (foundHaps.length == allHaps.length) {
+        dfs=[
+            "太强了吧",
+            "牛啊牛啊",
+            "66666666666666",
+        ];
         console.log("Gyul! +3");
         updateScore(3);
         scoreElement.innerText = "";
@@ -303,7 +311,39 @@ function checkForGyul() {
     } else {
         console.log("Not Gyul! -1");
         updateScore(-1);
+        var dfs=[
+            "你行不行啊",
+            "笑死我了",
+            "弱爆了你",
+            "哈哈哈哈哈哈哈",
+            "不会吧，不会吧，这么简单的游戏都不会",
+            "小脑养鱼吗",
+            "眼睛不用的话可以捐一下",
+        ];
+
     }
+    var n=Math.floor(Math.random() * dfs.length + 1)-1;   //随机获取一条数据
+    var $i=$("<p style='font-size: 22px'/>").text(dfs[n]);      //新建一个b标签，并显示随机的话语
+    var x=keyframes.x+10,y=keyframes.y-58;            //获取鼠标点击的x，和y
+    $i.css({                            //为标签赋予css值
+        "z-index":99999,
+        "top":y-20,
+        "left":x,
+        "position":"absolute",
+        "color":"#E94F06",
+        "font-family":"微软雅黑",
+        "cursor":"default",
+        "-moz-user-select": "none",
+        "-webkit-user-select": "none",
+        "-ms-user-select": "none",
+        "-khtml-user-select": "none",
+        "user-select": "none",
+    });
+    console.log($i);
+    $("body").append($i);               //在尾部插入
+    $i.animate({"top": y - 180, "opacity": 0}, 1500, function () {
+        $i.remove();
+    });     //动画消除
 }
 
 function updateScore(points) {
