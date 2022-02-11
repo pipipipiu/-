@@ -85,17 +85,17 @@ aside {
 
 .tile:hover {
     cursor: pointer;
-    -webkit-animation:bounce 1s .1s ease both;
-    -moz-animation:bounce 1s .1s ease both;
+    -webkit-animation:bounce .5s .1s ease both;
+    -moz-animation:bounce .5s .1s ease both;
 }
 @-webkit-keyframes bounce {
     0% {
         -webkit-transform:scale(1)
     }
     10%, 20% {
-        -webkit-transform:scale(0.9) rotate(-2deg)
+        -webkit-transform:scale(0.95) rotate(-2deg)
     }
-    30%, 50%, 70%, 90% {
+    30%, 50%, 70% {
         -webkit-transform:scale(1.05) rotate(2deg)
     }
     40%, 60%, 80% {
