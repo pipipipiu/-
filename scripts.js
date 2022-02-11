@@ -36,6 +36,8 @@ const BORDER_RED = "rgb(237, 49, 93)";
 
 const scoreElement = document.getElementById("score");
 
+const logElement = document.getElementById("log");
+
 /*
 tileBoard
 Index - Corresponding Tile
@@ -63,6 +65,9 @@ let roundNumber = 1;
 
 // Set total points in the game.
 let totalPoints = 0;
+
+// Set log in the game.
+let totalLogs = "";
 
 // Allows player to select tiles in the game (up to 3).
 let tilesSelected = 0;
@@ -205,11 +210,14 @@ function checkThreeTilesSelected() {
         }
         let hap = checkForHap(selectedTiles);
         if (hap && !foundHaps.includes(selectedTileIndexes)) {
+
             console.log("Correct Hap +1")
             updateScore(1);
+            updateLog(selectedTileIndexes,true);
             foundHaps.push(selectedTileIndexes);
         } else {
             console.log("Wrong Hap -1")
+            updateLog(selectedTileIndexes,false);
             updateScore(-1);
         }
 
@@ -301,6 +309,14 @@ function updateScore(points) {
     totalPoints += points;
     scoreElement.innerText = totalPoints;
     console.log(`Current score: ${totalPoints}`)
+};
+function updateLog(log,isTrue) {
+    let logArray=log.split('')
+    console.log(logArray,isTrue)
+    logArray=logArray.map(t=>Number(t)+1)
+     const logs =logArray.toString()+(isTrue?"（√）":"（×）");
+    totalLogs +=  logs;
+    logElement.innerText = totalLogs;
 };
 
 function allSame(arr) {
