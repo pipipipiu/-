@@ -1,5 +1,5 @@
 # gyul-hap
-An implementation of the game Gyul! Hap! as seen in The Genius (South Korean variety show).
+游戏联！和！的实现， 如《天才》（韩国综艺节目）中所见。
 
 ## Game Instructions
 On the board you will see 9 tiles, each tile having three qualities: a shape, a shape color, and a background color.
