@@ -41,13 +41,14 @@
     </main>
     <aside>
         <button class="gyul" type="reset">联</button>
-        <div  class="score-text">Score: <span id="score">0</span></div>
-        <div style="font-size: 20px" >你的选择: <span id="log"  style="font-size: 16px"></span></div>
+        <div  class="score-text">得分: <span id="score">0</span></div>
+<!--        <div style="font-size: 20px" >你的选择 </div>-->
+        <div style="font-size: 18px" >正确: <span id="log"  style="font-size: 18px;color:darkgreen"></span></div>
+        <div style="font-size: 18px" >错误: <span id="wrongLog"  style="font-size: 18px;color:darkred"></span></div>
         <div style="font-size: 14px;border: dashed gray 1px;padding:5px">
             <p> 每个瓷砖有三个元素:“形状”、“形状颜色”和“背景颜色”</p>
             <p> 选择三个瓷砖，使其各个元素分别对比下来，要么完全不同，要么完全相同。</p>
-            <p> 例如,你可以得选择1:红色三角与黑色背景2:蓝色圆形与黑色背景3:黄色正方形与黑色背景</p>
-            <p> 同样道理:1:红色三角形白色背景2:红色圆圈和灰色背景3:红色正方形与黑色背景</p>
+            <p> 例如,你可以得选择 1:红三角与黑色背景2:蓝圆形与黑色背景3:黄正方形与黑色背景</p>
             <p>但不允许背景两黑一白，或者形状两圆一三角</p>
             <p> 若成功找到一组加1分，若认为已找完所有组可点击“联”加3分</p>
             <p> 但找错或者没找完所有组就点击联则扣1分</p>

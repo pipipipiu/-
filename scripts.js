@@ -38,6 +38,8 @@ const scoreElement = document.getElementById("score");
 
 const logElement = document.getElementById("log");
 
+const wrongLogElement = document.getElementById("wrongLog");
+
 /*
 tileBoard
 Index - Corresponding Tile
@@ -68,6 +70,8 @@ let totalPoints = 0;
 
 // Set log in the game.
 let totalLogs = "";
+// Set wrong log in the game.
+let totalWrongLogs = "";
 
 // Allows player to select tiles in the game (up to 3).
 let tilesSelected = 0;
@@ -233,7 +237,14 @@ function checkThreeTilesSelected() {
                 "不会吧，不会吧，这么简单的游戏都不会",
                 "小脑养鱼吗",
                 "眼睛不用的话可以捐一下",
+                "你还是蛮正常的，如果不考虑智商"
             ];
+            if(foundHaps.includes(selectedTileIndexes))
+            {
+                testList=[
+                    "重复啦，大聪明",
+                ];
+            }
             console.log("Wrong Hap -1")
             updateLog(selectedTileIndexes,false);
             updateScore(-1);
@@ -397,8 +408,17 @@ function updateLog(log,isTrue) {
     console.log(logArray,isTrue)
     logArray=logArray.map(t=>Number(t)+1)
      const logs =logArray.toString()+(isTrue?"（√）":"（×）");
-    totalLogs +=  logs;
-    logElement.innerText = totalLogs;
+    console.log(logs)
+    if(isTrue)
+    {
+        totalLogs +=  logs;
+        logElement.innerText = totalLogs;
+    }
+    else
+    {
+        totalWrongLogs +=  logs;
+        wrongLogElement.innerText = totalWrongLogs;
+    }
 };
 
 function allSame(arr) {
