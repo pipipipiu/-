@@ -364,7 +364,10 @@ function checkForGyul(keyframes, options) {
         ];
         console.log("Gyul! +3");
         updateScore(3);
+        totalLogs = "";
+        totalWrongLogs="";
         logElement.innerText = "";
+        wrongLogElement.innerText = "";
         roundNumber++;
         playRound();
     } else {
