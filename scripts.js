@@ -222,6 +222,9 @@ function checkThreeTilesSelected() {
                 "牛啊牛啊",
                 "66666666666666",
                 "卡姿兰大眼睛也没有你的雪亮",
+                "你是我亲眼见了也不敢相信的高智商",
+                "你的眼力，够我跪一辈子",
+                "你这双眼睛啊，连石头也能看进三尺去",
             ];
             console.log("Correct Hap +1")
             updateScore(1);
@@ -351,9 +354,13 @@ function checkForGyul(keyframes, options) {
     ];
     if (foundHaps.length == allHaps.length) {
         dfs=[
-            "太强了吧",
+            "OHHHHHHHHH",
             "牛啊牛啊",
             "66666666666666",
+            "卡姿兰大眼睛也没有你的雪亮",
+            "你是我亲眼见了也不敢相信的高智商",
+            "你的聪明，够我跪一辈子",
+            "你这双眼睛啊，连石头也能看进三尺去",
         ];
         console.log("Gyul! +3");
         updateScore(3);
@@ -366,11 +373,13 @@ function checkForGyul(keyframes, options) {
         dfs=[
             "你行不行啊",
             "笑死我了",
+            "好好笑哦",
             "弱爆了你",
             "哈哈哈哈哈哈哈",
             "不会吧，不会吧，这么简单的游戏都不会",
             "小脑养鱼吗",
             "眼睛不用的话可以捐一下",
+            "你还是蛮正常的，如果不考虑智商"
         ];
 
     }
