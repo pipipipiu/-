@@ -39,7 +39,10 @@ const scoreElement = document.getElementById("score");
 const logElement = document.getElementById("log");
 
 const wrongLogElement = document.getElementById("wrongLog");
-
+//音频
+let musicWrong = new Audio('music/wrong.mp3');
+let musicAo = new Audio('music/ao.mp3');
+let musicDu = new Audio('music/du.mp3');
 /*
 tileBoard
 Index - Corresponding Tile
@@ -179,6 +182,7 @@ function makeTilesSelectable() {
         let currentTile = allTiles[i];
 
         currentTile.addEventListener("click", function() {
+            musicDu.play();
             let tileIsSelected = tileBoard[i][4];
 
             if (!tileIsSelected) {
@@ -248,6 +252,8 @@ function checkThreeTilesSelected() {
                     "重复啦，大聪明",
                 ];
             }
+
+            musicWrong.play();
             console.log("Wrong Hap -1")
             updateLog(selectedTileIndexes,false);
             updateScore(-1);
@@ -276,7 +282,7 @@ function checkThreeTilesSelected() {
             "top":y-20,
             "left":x,
             "position":"absolute",
-            "color":"#e95006",
+            "color":"#b564e9",
             "font-family":"微软雅黑",
             "cursor":"default",
             "-moz-user-select": "none",
@@ -384,7 +390,7 @@ function checkForGyul(keyframes, options) {
             "眼睛不用的话可以捐一下",
             "你还是蛮正常的，如果不考虑智商"
         ];
-
+        musicAo.play();
     }
     const n=Math.floor(Math.random() * dfs.length + 1)-1;   //随机获取一条数据
     const $i=$("<p style='font-size: 22px'/>").text(dfs[n]);      //新建一个b标签，并显示随机的话语
@@ -394,7 +400,7 @@ function checkForGyul(keyframes, options) {
         "top":y-20,
         "left":x,
         "position":"absolute",
-        "color":"#E94F06",
+        "color":"#dc37e9",
         "font-family":"微软雅黑",
         "cursor":"default",
         "-moz-user-select": "none",
