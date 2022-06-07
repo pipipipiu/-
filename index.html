@@ -20,7 +20,8 @@
             width: 60px;
             height: 60px;
             position: absolute;
-            background-image: url('./tiger.gif');
+            /*background-image: url('./tiger.gif');*/
+            background-image: url('./mituan.gif');
             background-size: cover;
             z-index: 999;
         }
@@ -38,6 +39,24 @@
         <div class="tile bottom left"><div class="shape"></div><span>7</span></div>
         <div class="tile bottom center"><div class="shape"></div><span>8</span></div>
         <div class="tile bottom right"><div class="shape"></div><span>9</span></div>
+        <div class="form_1" id="loginForm">
+            <form >
+                <div class="input_1"><div class="login_logo">登记</div><div class="close">X</div></div>
+                <hr>
+                <div class="input_1"><input type="text" id="userName"  name="userName" placeholder="&nbsp;名字"></div>
+                <div class="input_1"><input type="text" id="deptName" name="deptName" placeholder="&nbsp;部门"></div>
+                <div class="input_1"><input class="submit_1" type="submit" value="提&nbsp;交" onclick="
+                return false;"></div>
+            </form>
+        </div>
+        <div class="form_1" id="rankForm">
+                <div id="rankList" class="input_1">还在开发</div>
+               <div class="input_1"><input class="submit_1" type="submit" value="关闭"
+               onclick="let form_2=document.getElementById('rankForm');
+                form_2.className='form_1';
+               return false;"
+               ></div>
+        </div>
     </main>
     <aside>
         <button class="gyul" type="reset">联</button>
@@ -47,12 +66,17 @@
         <div style="font-size: 18px" >错误: <span id="wrongLog"  style="font-size: 18px;color:darkred"></span></div>
         <div style="font-size: 14px;border: dashed gray 1px;padding:5px">
             <p> 每个瓷砖有三个元素:“形状”、“形状颜色”和“背景颜色”</p>
-            <p> 选择三个瓷砖，使其各个元素分别对比下来，要么完全不同，要么完全相同。</p>
-            <p> 例如,你可以得选择 1:红三角与黑色背景2:蓝圆形与黑色背景3:黄正方形与黑色背景</p>
-            <p>但不允许背景两黑一白，或者形状两圆一三角</p>
+            <p> 选择三个瓷砖一组，保证各个元素分别对比下来，完全不同或者完全相同。</p>
+            <p style="color:#e8873b"> 例如,你可以得选择 1:红三角与黑色背景2:蓝圆形与黑色背景3:黄正方形与黑色背景</p>
+            <p style="color:#e8131f">但不允许背景两黑一白，或形状两圆一三角</p>
             <p> 若成功找到一组加1分，若认为已找完所有组可点击“联”加3分</p>
             <p> 但找错或者没找完所有组就点击联则扣1分</p>
         </div>
+        <div style="margin-top: 4px">
+        <span id="name"  style="font-size: 18px;">点击登记</span>
+        <span id="rankings"  style="font-size: 18px;">排行榜</span>
+        </div>
+
     </aside>
     <script src="jquery.min.js"></script>
     <script>

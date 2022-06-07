@@ -43,6 +43,26 @@ const wrongLogElement = document.getElementById("wrongLog");
 let musicWrong = new Audio('music/wrong.mp3');
 let musicAo = new Audio('music/ao.mp3');
 let musicDu = new Audio('music/du.mp3');
+//4-24 新增弹窗
+const btn_rank=document.getElementById("rankings");
+const btn_name=document.getElementById("name");
+const close=document.getElementsByClassName("submit_1");
+let form_1=document.getElementById("loginForm");
+let form_2=document.getElementById("rankForm");
+    btn_name.addEventListener('click',function(){
+     if(btn_name.innerText.includes("米团")||btn_name.innerText==="点击登记")
+     {
+         form_1.className="form_1 open";
+     }
+})
+     btn_rank.addEventListener('click',function(){
+         getScore()
+      form_2.className="form_1 open";
+})
+     close[0].addEventListener('click',function(){
+      sendScore();
+      form_1.className="form_1";
+})
 /*
 tileBoard
 Index - Corresponding Tile
@@ -82,6 +102,7 @@ let tilesSelected = 0;
 // Contains all Haps on the board and all found Haps.
 let allHaps;
 let foundHaps;
+let rankings;
 
 // Make all tiles clickable to select them.
 makeTilesSelectable();
@@ -93,6 +114,49 @@ playRound();
 const gyulButton = document.querySelector(".gyul");
 gyulButton.addEventListener("click", checkForGyul);
 
+function sendScore() {
+    const userName = document.getElementById("userName").value;
+    const deptName = document.getElementById("deptName").value;
+    const i=Math.floor(Math.random()*900)+100;
+    btn_name.innerText = userName?userName:'米团'+i+"号";
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: 'http://172.16.24.10:9678/game-center/score/addBatch',
+        contentType: "application/json",
+        data:JSON.stringify({
+            "userName":btn_name.innerText,
+            "deptName": deptName?deptName:'米加',
+            "score": totalPoints
+        }),
+        success: function (result) {
+            console.log("data is :" + result)
+            if (result.code == 200) {
+                alert("发送成功");
+            }else {
+                alert(result.message)
+            }
+        }
+    });
+}
+function getScore() {
+    $.ajax({
+        type: "Post",
+        dataType: "json",
+        url: 'https://tk.mishudata.com/game-center/score/getList',
+        contentType: "application/json",
+        data:JSON.stringify({
+        }),
+        success: function (result) {
+            console.log("data is :" + result)
+            if (result.code === 200) {
+                rankings=result
+            }else {
+                alert(result.message)
+            }
+        }
+    });
+}
 function playRound() {
     tileBoard = [];
     foundHaps = [];
@@ -197,7 +261,7 @@ function makeTilesSelectable() {
                 tileBoard[i][4] = false;
             }
 
-            // console.log(`CLICKED!: ${tileBoard[i]}`);
+            // //console.log(`CLICKED!: ${tileBoard[i]}`);
 
             checkThreeTilesSelected();
         });
@@ -230,7 +294,7 @@ function checkThreeTilesSelected() {
                 "你的眼力，够我跪一辈子",
                 "你这双眼睛啊，连石头也能看进三尺去",
             ];
-            console.log("Correct Hap +1")
+            //console.log("Correct Hap +1")
             updateScore(1);
             updateLog(selectedTileIndexes,true);
             foundHaps.push(selectedTileIndexes);
@@ -254,7 +318,7 @@ function checkThreeTilesSelected() {
             }
 
             musicWrong.play();
-            console.log("Wrong Hap -1")
+            //console.log("Wrong Hap -1")
             updateLog(selectedTileIndexes,false);
             updateScore(-1);
         }
@@ -307,27 +371,27 @@ function checkForHap(selectedTiles) {
         backgroundColors.push(selectedTiles[i][0]);
         shapeColors.push(selectedTiles[i][1]);
         shapes.push(selectedTiles[i][3]);
-        // console.log(selectedTiles[i]);
+        // //console.log(selectedTiles[i]);
     }
 
     // Check background colors if all same or all different.
     let backgroundColorHap = (allSame(backgroundColors) || allDifferent(backgroundColors));
-    // console.log(`backgroundColorHap: ${backgroundColorHap}`);
+    // //console.log(`backgroundColorHap: ${backgroundColorHap}`);
 
     // Check shape colors if all same or all different.
     let shapeColorHap = (allSame(shapeColors) || allDifferent(shapeColors));
-    // console.log(`shapeColorHap: ${shapeColorHap}`);
+    // //console.log(`shapeColorHap: ${shapeColorHap}`);
 
     // Check shapes if all same or all different.
     let shapeHap = (allSame(shapes) || allDifferent(shapes));
-    // console.log(`shapeHap: ${shapeHap}`);
+    // //console.log(`shapeHap: ${shapeHap}`);
 
     // Check if a Hap was formed.
     if ((backgroundColorHap && shapeColorHap) && shapeHap) {
-        // console.log("Hap!");
+        // //console.log("Hap!");
         return true;
     } else {
-        // console.log("Not Hap!");
+        // //console.log("Not Hap!");
         return false;
     }
 }
@@ -336,7 +400,7 @@ function findAllHaps() {
     const allHaps = [];
     let numOfTiles = tileBoard.length;
 
-    console.log(`Hap solutions for round ${roundNumber}:`);
+    //console.log(`Hap solutions for round ${roundNumber}:`);
     for (let i = 0; i < numOfTiles-2; i++) {
         for (let j = i+1; j < numOfTiles-1; j++) {
             for (let k = j+1; k < numOfTiles; k++) {
@@ -344,7 +408,7 @@ function findAllHaps() {
                 let tile2 = tileBoard[j];
                 let tile3 = tileBoard[k];
                 if (checkForHap([tile1, tile2, tile3])) {
-                    console.log(`Hap Found: ${i+1} ${j+1} ${k+1}`);
+                    //console.log(`Hap Found: ${i+1} ${j+1} ${k+1}`);
                     allHaps.push(i.toString() + j.toString() + k.toString());
                 }
             }
@@ -368,7 +432,7 @@ function checkForGyul(keyframes, options) {
             "你的聪明，够我跪一辈子",
             "你这双眼睛啊，连石头也能看进三尺去",
         ];
-        console.log("Gyul! +3");
+        //console.log("Gyul! +3");
         updateScore(3);
         totalLogs = "";
         totalWrongLogs="";
@@ -377,7 +441,7 @@ function checkForGyul(keyframes, options) {
         roundNumber++;
         playRound();
     } else {
-        console.log("Not Gyul! -1");
+        //console.log("Not Gyul! -1");
         updateScore(-1);
         dfs=[
             "你行不行啊",
@@ -409,7 +473,7 @@ function checkForGyul(keyframes, options) {
         "-khtml-user-select": "none",
         "user-select": "none",
     });
-    console.log($i);
+    //console.log($i);
     $("body").append($i);               //在尾部插入
     $i.animate({"top": y - 180, "opacity": 0}, 1500, function () {
         $i.remove();
@@ -419,14 +483,14 @@ function checkForGyul(keyframes, options) {
 function updateScore(points) {
     totalPoints += points;
     scoreElement.innerText = totalPoints;
-    console.log(`Current score: ${totalPoints}`)
+    //console.log(`Current score: ${totalPoints}`)
 };
 function updateLog(log,isTrue) {
     let logArray=log.split('')
-    console.log(logArray,isTrue)
+    //console.log(logArray,isTrue)
     logArray=logArray.map(t=>Number(t)+1)
      const logs =logArray.toString()+(isTrue?"（√）":"（×）");
-    console.log(logs)
+    //console.log(logs)
     if(isTrue)
     {
         totalLogs +=  logs;

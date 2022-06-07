@@ -153,3 +153,81 @@ aside {
         margin-top: 15%;
     }
 }
+#name{
+    color: #ff7acb;
+    float: left;
+    left:20px
+}
+#rankings{
+    color: #809dff;
+    float: right;
+    right:20px
+}
+.form_1{
+    width:250px;
+    height:250px;
+    border:3px solid #f8f8f8;
+    visibility: hidden;
+    position: absolute;
+    z-index: 999;
+    opacity: 1;
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+    margin-top: 10%;
+    border-radius: 10px;
+}
+.open{
+    visibility: visible;
+    opacity: 1;
+}
+.input_1{
+    margin-top: 15px;
+    width:80%;
+    height:40px;
+    font-size: 14px;
+}
+input{
+    margin-left: 10%;
+    width:100%;
+    height:30px;
+    border-radius: 5px;
+    border:1px solid  #e5dfdf;
+    font-size: 14px;
+    padding: 4px;
+}
+.input_1 .login_logo{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 300;
+    padding-left: 30px;
+    float: left;
+}
+.input_1 .close{
+    width:20px;
+    height:20px;
+    color:#5d5d5d;
+    text-align: center;
+    line-height: 20px;
+    border:1px solid  #5d5d5d;
+    border-radius: 50%;
+    float: right;
+    padding-top: 0px;
+    visibility: hidden;
+    font-size: 14px;
+}
+.input_1 .close:hover{
+    cursor:pointer;
+}
+hr{
+    background-color: #F8F8F8;
+}
+
+.input_1 .submit_1{
+    border:1px solid #f88020;
+    background-color: white;
+}
+.input_1 .submit_1:hover{
+    background-color: #f88020;
+    color:white;
+}
