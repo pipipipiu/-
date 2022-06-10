@@ -153,7 +153,7 @@ function getScore() {
                 rankings=result;
                 const rankElement=document.getElementById("rankList");
                   let innerText=""
-                rankings.map((t,index)=> { innerText += `【${index}】【${t.userName}】${t.score}分\r \n`} )
+                rankings.map((t,index)=> { innerText += `【${index}】${t.deptName}【${t.userName}】${t.score}分\r \n`} )
                 rankElement.innerText =innerText
                 console.log(rankElement.innerText)
             }
