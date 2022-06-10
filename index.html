@@ -39,7 +39,7 @@
         <div class="tile bottom left"><div class="shape"></div><span>7</span></div>
         <div class="tile bottom center"><div class="shape"></div><span>8</span></div>
         <div class="tile bottom right"><div class="shape"></div><span>9</span></div>
-        <div class="form_1" id="loginForm">
+        <div class="form_1 open" id="loginForm">
             <form >
                 <div class="input_1"><div class="login_logo">登记</div><div class="close">X</div></div>
                 <hr>
@@ -50,7 +50,8 @@
             </form>
         </div>
         <div class="form_1" id="rankForm">
-                <div id="rankList" class="input_1">还在开发</div>
+                <strong>排行榜</strong>
+                <div id="rankList"  class="overflowList">暂无数据</div>
                <div class="input_1"><input class="submit_1" type="submit" value="关闭"
                onclick="let form_2=document.getElementById('rankForm');
                 form_2.className='form_1';

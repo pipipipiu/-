@@ -122,19 +122,15 @@ function sendScore() {
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: 'http://172.16.24.10:9678/game-center/score/addBatch',
+        url: 'https://tk.mishudata.com/game-center/score/addBatch',
         contentType: "application/json",
-        data:JSON.stringify({
+        data:JSON.stringify([{
             "userName":btn_name.innerText,
             "deptName": deptName?deptName:'米加',
             "score": totalPoints
-        }),
+        }]),
         success: function (result) {
-            console.log("data is :" + result)
-            if (result.code == 200) {
-                alert("发送成功");
-            }else {
-                alert(result.message)
+            if (!!result) {
             }
         }
     });
@@ -149,10 +145,13 @@ function getScore() {
         }),
         success: function (result) {
             console.log("data is :" + result)
-            if (result.code === 200) {
-                rankings=result
-            }else {
-                alert(result.message)
+            if (!!result) {
+                rankings=result;
+                const rankElement=document.getElementById("rankList");
+                  let innerText=""
+                rankings.map((t,index)=> { innerText += `${index}:【${t.userName}】${t.score}\r \n`} )
+                rankElement.innerText =innerText
+                console.log(rankElement.innerText)
             }
         }
     });
@@ -483,6 +482,7 @@ function checkForGyul(keyframes, options) {
 function updateScore(points) {
     totalPoints += points;
     scoreElement.innerText = totalPoints;
+    sendScore()
     //console.log(`Current score: ${totalPoints}`)
 };
 function updateLog(log,isTrue) {
