@@ -103,7 +103,7 @@ let tilesSelected = 0;
 let allHaps;
 let foundHaps;
 let rankings;
-
+const i=Math.floor(Math.random()*900)+100;
 // Make all tiles clickable to select them.
 makeTilesSelectable();
 
@@ -115,9 +115,11 @@ const gyulButton = document.querySelector(".gyul");
 gyulButton.addEventListener("click", checkForGyul);
 
 function sendScore() {
+    if(totalPoints==0){
+        return;
+    }
     const userName = document.getElementById("userName").value;
     const deptName = document.getElementById("deptName").value;
-    const i=Math.floor(Math.random()*900)+100;
     btn_name.innerText = userName?userName:'米团'+i+"号";
     $.ajax({
         type: "POST",
@@ -151,7 +153,7 @@ function getScore() {
                 rankings=result;
                 const rankElement=document.getElementById("rankList");
                   let innerText=""
-                rankings.map((t,index)=> { innerText += `${index}:【${t.userName}】${t.score}\r \n`} )
+                rankings.map((t,index)=> { innerText += `【${index}】【${t.userName}】${t.score}分\r \n`} )
                 rankElement.innerText =innerText
                 console.log(rankElement.innerText)
             }
