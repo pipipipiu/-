@@ -60,6 +60,13 @@ let form_2=document.getElementById("rankForm");
       form_2.className="form_2 open";
 })
      close[0].addEventListener('click',function(){
+         userName = document.getElementById("userName").value;
+         deptName = document.getElementById("deptName").value;
+         if(!userName||!deptName)
+         {
+             alert('请输入名字和部门')
+             return
+         }
       sendScore();
       form_1.className="form_1";
 })
@@ -103,6 +110,8 @@ let tilesSelected = 0;
 let allHaps;
 let foundHaps;
 let rankings;
+let userName;
+let deptName
 const i=Math.floor(Math.random()*900)+100;
 // Make all tiles clickable to select them.
 makeTilesSelectable();
@@ -115,12 +124,11 @@ const gyulButton = document.querySelector(".gyul");
 gyulButton.addEventListener("click", checkForGyul);
 
 function sendScore() {
+
+    btn_name.innerText = userName?userName:'米团'+i+"号";
     if(totalPoints==0){
         return;
     }
-    const userName = document.getElementById("userName").value;
-    const deptName = document.getElementById("deptName").value;
-    btn_name.innerText = userName?userName:'米团'+i+"号";
     $.ajax({
         type: "POST",
         dataType: "json",
