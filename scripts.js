@@ -57,7 +57,7 @@ let form_2=document.getElementById("rankForm");
 })
      btn_rank.addEventListener('click',function(){
          getScore()
-      form_2.className="form_1 open";
+      form_2.className="form_2 open";
 })
      close[0].addEventListener('click',function(){
       sendScore();
