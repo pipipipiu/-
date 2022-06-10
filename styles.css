@@ -225,7 +225,7 @@ hr{
 
 .input_1 .submit_1{
     border:1px solid #f88020;
-    background-color: white;
+    background-color: #f88020;
     color: #000;
 }
 .input_1 .submit_1:hover{

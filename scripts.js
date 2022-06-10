@@ -122,6 +122,7 @@ function sendScore() {
     $.ajax({
         type: "POST",
         dataType: "json",
+        async:false,
         url: 'https://tk.mishudata.com/game-center/score/addBatch',
         contentType: "application/json",
         data:JSON.stringify([{
@@ -139,6 +140,7 @@ function getScore() {
     $.ajax({
         type: "Post",
         dataType: "json",
+        async:false,
         url: 'https://tk.mishudata.com/game-center/score/getList',
         contentType: "application/json",
         data:JSON.stringify({
