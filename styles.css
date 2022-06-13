@@ -210,6 +210,15 @@ input{
     font-size: 14px;
     padding: 4px;
 }
+select{
+    margin-left: 10%;
+    width:100%;
+    height:30px;
+    border-radius: 5px;
+    border:1px solid  #e5dfdf;
+    font-size: 14px;
+    padding: 4px;
+}
 .input_1 .login_logo{
     text-align: left;
     font-size: 20px;
