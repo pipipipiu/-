@@ -170,6 +170,8 @@ aside {
     visibility: hidden;
     position: absolute;
     top:100px;
+    left:50vw;
+    margin-left:-125px;
     z-index: 999;
     opacity: 1;
     overflow: hidden;
@@ -185,6 +187,8 @@ aside {
     position: absolute;
     top:100px;
     z-index: 999;
+    left:50vw;
+    margin-left:-125px;
     opacity: 1;
     background-color: white;
     text-align: center;
@@ -200,6 +204,7 @@ aside {
     width:80%;
     height:40px;
     font-size: 14px;
+    text-align: center;
 }
 input{
     margin-left: 10%;
