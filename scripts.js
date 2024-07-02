@@ -7,8 +7,8 @@ const BACKGROUND_COLORS = {
 };
 //设置三种图标色
 const SHAPE_COLORS = {
-    red: "#C81D25", 
-    blue: "#016FB9", 
+    red: "#C81D25",
+    blue: "#016FB9",
     yellow: "#FDE935"
 };
 //形状
@@ -44,32 +44,32 @@ const wrongLogElement = document.getElementById("wrongLog");
 // let musicAo = new Audio('music/ao.mp3');
 // let musicDu = new Audio('music/du.mp3');
 //4-24 新增弹窗
-const btn_rank=document.getElementById("rankings");
-const btn_name=document.getElementById("name");
-const close=document.getElementsByClassName("submit_1");
-let form_1=document.getElementById("loginForm");
-let form_2=document.getElementById("rankForm");
-    btn_name.addEventListener('click',function(){
-     if(btn_name.innerText.includes("米团")||btn_name.innerText==="点击登记")
-     {
-         form_1.className="form_1 open";
-     }
-})
-     btn_rank.addEventListener('click',function(){
-         getScore()
-      form_2.className="form_2 open";
-})
-     close[0].addEventListener('click',function(){
-         userName = document.getElementById("userName").value;
-         deptName = document.getElementById("deptName").value;
-         if(!userName||!deptName)
-         {
-             alert('请输入名字和部门')
-             return
-         }
-      sendScore();
-      form_1.className="form_1";
-})
+// const btn_rank=document.getElementById("rankings");
+// const btn_name=document.getElementById("name");
+// const close=document.getElementsByClassName("submit_1");
+// let form_1=document.getElementById("loginForm");
+// let form_2=document.getElementById("rankForm");
+//     btn_name.addEventListener('click',function(){
+//      if(btn_name.innerText.includes("米团")||btn_name.innerText==="点击登记")
+//      {
+//          form_1.className="form_1 open";
+//      }
+// })
+//      btn_rank.addEventListener('click',function(){
+//          getScore()
+//       form_2.className="form_2 open";
+// })
+//      close[0].addEventListener('click',function(){
+//          userName = document.getElementById("userName").value;
+//          deptName = document.getElementById("deptName").value;
+//          if(!userName||!deptName)
+//          {
+//              alert('请输入名字和部门')
+//              return
+//          }
+//       sendScore();
+//       form_1.className="form_1";
+// })
 /*
 tileBoard
 Index - Corresponding Tile
@@ -220,7 +220,7 @@ function createTile() {
 
     // Get shape color.
     let shapeColor = getRandomFromArray(Object.keys(SHAPE_COLORS));
-    
+
     // Get shape.
     let shape = getRandomFromArray(Object.keys(SHAPES));
     let shapeStyles = SHAPES[shape];
@@ -345,7 +345,7 @@ function checkThreeTilesSelected() {
             for (let i = 0; i < allTiles.length; i++) {
                 let currentTile = allTiles[i];
                 currentTile.style.borderColor = BORDER_BLACK;
-            }; 
+            };
         }, 500)
         const n=Math.floor(Math.random() * testList.length + 1)-1;   //随机获取一条数据
         const $i=$("<p/>").text(testList[n]);      //新建一个b标签，并显示随机的话语
@@ -493,7 +493,7 @@ function checkForGyul(keyframes, options) {
 function updateScore(points) {
     totalPoints += points;
     scoreElement.innerText = totalPoints;
-    sendScore()
+    // sendScore()
     //console.log(`Current score: ${totalPoints}`)
 };
 function updateLog(log,isTrue) {
